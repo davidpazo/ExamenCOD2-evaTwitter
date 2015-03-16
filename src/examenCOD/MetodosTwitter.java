@@ -33,6 +33,22 @@ public class MetodosTwitter {
                 .setOAuthAccessTokenSecret("kTXQAcbRbzBPi6pjttzgxEU9AhH6USs5uaX8qm1JxuD6S");
         twitter = new TwitterFactory(cb.build()).getInstance();
     }
+ /**
+     * Nos da nuestro timeLine
+     */
+    public void timeLine() {
+        try {
+            List<Status> statuses = twitter.getHomeTimeline();
+            System.out.println("Showing home timeline.");
+            for (Status status : statuses) {
+                System.out.println(status.getUser().getName() + ":"
+                        + status.getText());
+            }
+        } catch (TwitterException ex) {
+            Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+   
    
 }
