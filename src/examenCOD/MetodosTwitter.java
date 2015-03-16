@@ -33,7 +33,8 @@ public class MetodosTwitter {
                 .setOAuthAccessTokenSecret("kTXQAcbRbzBPi6pjttzgxEU9AhH6USs5uaX8qm1JxuD6S");
         twitter = new TwitterFactory(cb.build()).getInstance();
     }
- /**
+
+    /**
      * Nos da nuestro timeLine
      */
     public void timeLine() {
@@ -48,7 +49,8 @@ public class MetodosTwitter {
             Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- /**
+
+    /**
      * Busca tweets con el texto introducido
      */
     public void buscar() {
@@ -63,7 +65,8 @@ public class MetodosTwitter {
             Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
- /**
+
+    /**
      * Crea y publica un tweet
      */
     public void tweet() {
@@ -76,8 +79,16 @@ public class MetodosTwitter {
         }
     }
 
-    
-   
-   
-   
+    /**
+     * Manda mensaje directo (solo si ambos sois amiguitos)
+     *
+     * @throws TwitterException
+     */
+    public void directMsg() throws TwitterException {
+        String nombre = JOptionPane.showInputDialog("Nombre:");
+        String msg = JOptionPane.showInputDialog("Mensaje:");
+        DirectMessage message = twitter.sendDirectMessage(nombre, msg);
+        System.out.println("Sent: " + message.getText() + " to @" + message.getRecipientScreenName());
+    }
+
 }
