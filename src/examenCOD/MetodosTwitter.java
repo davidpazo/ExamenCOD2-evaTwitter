@@ -48,7 +48,23 @@ public class MetodosTwitter {
             Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+ /**
+     * Busca tweets con el texto introducido
+     */
+    public void buscar() {
+        try {
+            String preg = JOptionPane.showInputDialog("Buscar:");
+            Query query = new Query(preg);
+            QueryResult result = twitter.search(query);
+            for (Status status : result.getTweets()) {
+                System.out.println("@" + status.getUser().getScreenName() + ":" + status.getText());
+            }
+        } catch (TwitterException ex) {
+            Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+   
    
    
 }
