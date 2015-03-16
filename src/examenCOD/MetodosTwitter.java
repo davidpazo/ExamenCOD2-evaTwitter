@@ -63,7 +63,20 @@ public class MetodosTwitter {
             Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+ /**
+     * Crea y publica un tweet
+     */
+    public void tweet() {
+        try {
+            String twet = JOptionPane.showInputDialog("Tweett:");
+            Status status = twitter.updateStatus(twet);
+            System.out.println("Successfully updated the status to [" + status.getText() + "].");
+        } catch (TwitterException ex) {
+            Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    
    
    
    
